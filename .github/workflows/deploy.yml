@@ -56,7 +56,7 @@ jobs:
             --parameters "{\"commands\":[
               \"aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}\",
               \"cd /opt/docker\",
-              \"git pull origin master\",
+              \"git pull origin master || git clone https://github.com/KBY-CL/springboot_redis.git .\",
               \"echo ECR_IMAGE=$ECR_IMAGE > .env\",
               \"docker compose pull\",
               \"docker compose up -d\",
