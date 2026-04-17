@@ -9,7 +9,7 @@ services:
       - session-net
 
   app-1:
-    build: .
+    image: ${ECR_IMAGE}
     container_name: app-1
     hostname: app-1
     ports:
@@ -23,7 +23,7 @@ services:
       - session-net
 
   app-2:
-    build: .
+    image: ${ECR_IMAGE}
     container_name: app-2
     hostname: app-2
     ports:
