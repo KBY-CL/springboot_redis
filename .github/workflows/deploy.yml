@@ -34,6 +34,11 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: ECR 리포지토리 생성 (없을 경우)
+        run: |
+          aws ecr describe-repositories --repository-names springboot-redis || \
+          aws ecr create-repository --repository-name springboot-redis
+
       - name: Docker 이미지 빌드 & ECR 푸시
         env:
           ECR_IMAGE: ${{ steps.login-ecr.outputs.registry }}/springboot-redis:latest
